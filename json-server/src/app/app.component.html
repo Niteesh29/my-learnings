@@ -1,0 +1,131 @@
+<div>
+  <h2>{{title}}</h2>
+</div>
+
+<div class="container-fluid bg-secondary p-2 m-4">
+  <nav class="d-flex flex-column align-item-center justify-content-center">
+    <a routerLink="one" class="dash-item text-white">Load First Component</a>
+    <a routerLink="two" class="dash-item text-white">Load second component</a>
+    <a  class="text-white" routerLink='three'>Load Third Component</a>
+    <a class="text-white" [routerLink]='[{ outlets: { secondRouterOutlet: ["Four"] } }]'>Load Fourth Component</a>
+
+</nav>
+<div class="bg-white text-red">
+  <router-outlet></router-outlet>                   
+
+</div>
+<div class="bg-white text-red">
+  <!-- <router-outlet name="secondRouterOutlet" ></router-outlet> -->
+
+</div>
+</div>
+
+<!-- <form #singUpForm="ngForm" (ngSubmit)="onSubmit(singUpForm)">
+ 
+  <p>
+    <label for="firstname">First Name</label>
+    <input type="text" name="firstname" [( ngModel)] ="firstname">
+  </p>
+ 
+  <p>
+    <label for="lastname">Last Name</label>
+    <input type="text" name="lastname"[( ngModel)]>
+  </p>
+ 
+  <p>
+    <label for="email">Email </label>
+    <input type="text" id="email" name="email"[( ngModel)]>
+  </p>
+ 
+  <p>
+    <label for="gender">Geneder</label>
+    <input type="radio" value="male" name="gender"[( ngModel)]> Male
+    <input type="radio" value="female" name="gender"[( ngModel)]> Female
+  </p>
+ 
+  <p>
+    <label for="isMarried">Married</label>
+    <input type="checkbox" name="isMarried"[( ngModel)]>
+  </p>
+ 
+   <select name="country"[( ngModel)]>
+    <option [ngValue]="c.id" *ngFor="let c of countryList">
+      {{c.name}}
+    </option>
+  </select> 
+ 
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+</form> -->
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+  <p>
+    <label for="firstname">First Name </label>
+    <input type="text" id="firstname" name="firstname" formControlName="firstname">
+  </p>
+ 
+  <p>
+    <label for="lastname">Last Name </label>
+    <input type="text" id="lastname" name="lastname" formControlName="lastname">
+  </p>
+ 
+  <p>
+    <label for="email">Email </label>
+    <input type="text" id="email" name="email" formControlName="email">
+  </p>
+ 
+  <p>
+    <label for="gender">Geneder </label>
+    <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
+    <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
+  </p>
+ 
+  <p>
+    <label for="isMarried">Married </label>
+    <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
+  </p>
+ 
+ 
+  <!-- <p>
+    <label for="country">country </label>
+    <select id="country" name="country" formControlName="country">
+      <option value="1">India</option>
+      <option value="2">USA</option>
+      <option value="3">England</option>
+      <option value="4">Singapore</option>
+    </select>
+  </p> -->
+
+  <div formGroupName="address">
+
+    <p>
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" formControlName="city">
+    </p>
+    <p>
+      <label for="street">street</label>
+      <input type="text" id="street" name="street" formControlName="street">
+    </p>
+    <p>
+      <label for="pincode">pincode</label>
+      <input type="text" id="pincode" name="pincode" formControlName="pincode">
+    </p>
+    <p>
+      <label for="country">country </label>
+      <select id="country" name="country" formControlName="country">
+        <option value="1">India</option>
+        <option value="2">USA</option>
+        <option value="3">England</option>
+        <option value="4">Singapore</option>
+      </select>
+    </p>
+  </div>
+ 
+ 
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+
+</form>

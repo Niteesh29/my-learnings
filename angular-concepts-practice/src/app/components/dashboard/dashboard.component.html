@@ -1,0 +1,45 @@
+<main class="firstSection">
+    <div class="heading">Create a component that takes an array of items as input and displays them as a list.Also give a functionality to add the items and delete the selected item</div>
+    <section *ngIf="employeeName; else noData">
+        <button id="addBtn" class="btn" (click)="addListItem()">Add+</button>
+        <input type="text" [(ngModel)]="inputText" class="form-control listInput">
+
+        <ul *ngFor="let name of employeeName; let i=index; let e=even; let o=odd" >
+            <li [ngClass]="e ?'even':'odd'">{{i}} : {{name | uppercase}}</li>
+             <button class="btn" (click)="deleteListItem(i)">Delete</button>
+        </ul>
+    </section>
+</main>
+
+<main class="secondSection">
+    <div class="heading">Implement a toggle switch that changes the color of a div based on its state..</div>
+    <div class="outerDiv">
+        <div class="innerDiv">
+            <input type="checkbox" [(ngModel)]="changeColor" value="changeColor">
+            <label for="changeColor" [ngStyle]="{'color': changeColor ? 'red':'green'}">Toggle the Color</label>
+        </div>
+        <div class="div" [ngStyle]="{'background-color': changeColor ? 'red':'green'}">
+        </div>
+    </div>
+</main>
+
+<main class="section3">
+    <div class="heading">Build a simple counter component with increment, decrement, and reset functionality.Also disable the button once value becomes zero</div>
+    <div class="parentDiv">
+        <div class="outerDiv">
+            <p [ngStyle]="{'color':counterColor? 'red':'green'}">{{count}}</p>
+            <div class="innerDiv">
+                <button class="btn" (click)="increment()">Increment</button>
+                <button class="btn" (click)="decrement()">Decrement</button>
+                <button class="btn" (click)="reset()">Reset</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<div>
+    <ng-template #noData>
+     <p>No data found</p>
+    </ng-template>
+</div>

@@ -1,0 +1,25 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <h2>Add Products to Order</h2>
+    <div formArrayName="products">
+      <div *ngFor="let product of products?.controls; let i = index" [formGroupName]="i" class="product">
+        <label>
+          Product Name:
+          <input formControlName="name" placeholder="Enter product name" />
+        </label>
+        <label>
+          Price:
+          <input type="number" formControlName="price" placeholder="Enter price" />
+        </label>
+        <label>
+          Quantity:
+          <input type="number" formControlName="quantity" placeholder="Enter quantity" />
+        </label>
+        <button type="button" (click)="products.removeAt(i)">Remove Product</button>
+      </div>
+    </div>
+    <button type="button" (click)="addProduct()">Add Another Product</button>
+    <h3>Total Price: {{ totalPrice | currency }}</h3>
+    <button type="submit">Submit Order</button>
+  </form>
+
+  

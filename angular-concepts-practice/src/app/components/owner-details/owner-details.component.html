@@ -1,0 +1,78 @@
+<form [formGroup]="ownerForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="owners">
+      <div *ngFor="let owner of owners.controls; let i = index" [formGroupName]="i" class="owner-block">
+        <h3>Owner {{ i + 1 }}</h3>
+  
+        <div formGroupName="personalInfo">
+          <label>First Name:</label>
+          <input formControlName="firstName" type="text">
+          <div *ngIf="owner.get('personalInfo.firstName')?.hasError('required') && owner.get('personalInfo.firstName')?.touched" > First Name is required</div>
+  
+          <label>Last Name:</label>
+          <input formControlName="lastName" type="text">
+          <div *ngIf="owner.get('personalInfo.lastName')?.hasError('required') && owner.get('personalInfo.lastName')?.touched" > Last Name is required</div>
+
+  
+          <label>Date of Birth:</label>
+          <input formControlName="dob" type="date" required>
+          <div *ngIf="owner.get('personalInfo.dob')?.hasError('required') && owner.get('personalInfo.dob')?.touched" > Date of Birth is required</div>
+
+          <div *ngIf="owner.get('personalInfo.dob')?.errors?.['invalidAge']">Age should be between 18 and 75</div>
+  
+          <label>Gender:</label>
+          <select formControlName="gender">
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+  
+          <label>Ownership Percentage:</label>
+          <input formControlName="ownershipPercentage" type="number" required [value]=" percentage | appOwnership" >
+          <div *ngIf="owner.get('personalInfo.ownershipPercentage')?.hasError('required') && owner.get('personalInfo.ownershipPercentage')?.touched" >Ownership percentage is required</div>
+
+          <div *ngIf="owner.get('personalInfo.ownershipPercentage')?.errors?.['invalidPercentage']">Invalid percentage</div>
+  
+          <label>Phone Number:</label>
+          <input formControlName="phoneNumber" type="text" required >
+          <div *ngIf="owner.get('personalInfo.phoneNumber')?.hasError('required') && owner.get('personalInfo.phoneNumber')?.touched" >Phone Number is required</div>
+          <div *ngIf="owner.get('personalInfo.phoneNumber')?.hasError('pattern') && owner.get('personalInfo.phoneNumber')?.touched" >Phone number must be in digits having max length 10</div>
+
+  
+          <label>Email:</label>
+          <input formControlName="email" type="email" required>
+          <div *ngIf="owner.get('personalInfo.email')?.hasError('required') && owner.get('personalInfo.email')?.touched" >Email is required</div>
+          <div *ngIf="owner.get('personalInfo.email')?.hasError('email') && owner.get('personalInfo.email')?.touched" >Please enter a valid email</div>
+        </div>
+  
+        <div formGroupName="address">
+          <h4>Address</h4>
+          <label>Street:</label>
+          <input formControlName="street" type="text" required>
+          <label>City:</label>
+          <input formControlName="city" type="text" required>
+          <label>State:</label>
+          <input formControlName="state" type="text" required>
+          <label>Country:</label>
+          <input formControlName="country" type="text" required>
+          <label>Postal Code:</label>
+          <input formControlName="postalCode" type="text" required>
+          <div *ngIf="owner.get('address.postalCode')?.hasError('required')  && owner.get('address.postalCode')?.touched"  >Postal code is required</div>
+          <div *ngIf="owner.get('address.postalCode')?.hasError('pattern')"  >Input should contain digits only. Maximum 6 digits allowed</div>
+        </div>
+  
+        <div>
+          <input type="checkbox" formControlName="isPrimaryOwner" (change)="checkPrimaryOwner(i)">
+          <label>Set as Primary Owner</label>
+        </div>
+  
+        <div>
+          <input type="checkbox" formControlName="sameAsPrimaryAddress" (change)="copyPrimaryAddress(i)">
+          <label>Same as Primary Address</label>
+        </div>
+      </div>
+    </div>
+  
+    <button type="button" (click)="addOwner()">Add Additional Owner</button>
+    <button type="submit">Submit</button>
+  </form>
+  

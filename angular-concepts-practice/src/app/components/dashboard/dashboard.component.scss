@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: lightgray;
+}
+.heading {
+    font-size: 24px;
+    color: #F3CA20;
+    font-weight: bolder;
+    border-bottom: 2px solid #101820FF;
+}
+.firstSection {
+   
+
+    section {
+        width: 60%;
+        #addBtn 
+        {
+            margin: 10px 0px;
+            font-size: 16px;
+            width: 100px;
+        }
+        .listInput 
+        {
+            width: 300px;
+            margin-left: 20px;
+            padding: 5px;
+            border: 1px solid gray;
+            border-radius: 3px;
+            &:hover 
+            {
+                border: 2px solid gray;
+            }
+        }
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+            
+            li {
+                list-style-type: none;
+                width: 15%;
+                // margin-right: 10px; // Add spacing between list items
+                // // display: flex; // Ensure li content aligns properly
+                // // align-items: center;
+            }
+    
+            .btn {
+                margin-left: 10px; // Spacing between text and button
+                padding: 5px 15px; // Button padding for better clickability
+                font-size: 14px;
+                cursor: pointer;
+                border: 1px solid #ccc;
+                background-color: #f0f0f0;
+                border-radius: 4px;
+                transition: background-color 0.3s ease;
+                
+                &:hover {
+                    background-color: #e0e0e0; // Hover effect for buttons
+                }
+            }
+        }
+    
+        .even {
+            color: red;
+            font-size: 14px;
+            font-weight: normal;
+        }
+    
+        .odd {
+            color: green;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    
+}
+
+.secondSection 
+{
+  .outerDiv 
+  {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .innerDiv 
+    {
+       label
+       {
+        font-size: 17px;
+        font-weight: bold;
+       }
+    }
+    .div 
+    {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        border-radius: 50%;
+        background-color: red;
+    }
+  }
+}
+
+.section3 
+{
+    .parentDiv 
+    {
+        width: 500px;
+        margin: auto;
+        box-shadow: 2px 4px 3px lightblue;
+
+        .outerDiv 
+        {
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+
+            p 
+            {
+                text-align: center;
+                font-size: 30px;
+                font-weight: bold;
+            }
+            .innerDiv
+            {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .btn 
+                {
+                    padding: 7px;
+                    margin: 0px 8px;
+                    background: #F3CA20;
+                    // border-bottom: 1px solid black;
+                    color: white;
+                    border-radius: 0px 10px;
+                    font-size: 17px;
+
+                    &:hover 
+                    
+                    {
+                        color:#F3CA20;
+                        background-color: black;
+                    }
+                    &:disabled 
+                    {
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+}
